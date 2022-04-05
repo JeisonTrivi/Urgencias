@@ -30,11 +30,14 @@ namespace Urgencias.Models
         [Required]
         public Boolean Atendido { get; set; }
 
+        //calculo de edad
         public void calculoEdad(DateTime FechaNacimiento)
         {
             DateTime fechaActual = DateTime.Now;
             this.Edad = fechaActual.Year - FechaNacimiento.Year;
             
         }
+        
+        
     }
 }

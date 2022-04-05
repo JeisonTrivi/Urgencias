@@ -1,42 +1,77 @@
 @model Urgencias.Models.Paciente
+@{
+  DateTime FechaNow = DateTime.Now;
+    string FechaNowString = FechaNow.ToString("yyyy-MM-ddThh:mm");
+}
 
-<h1>Registro Paciente Urgencias</h1>
+<h1 class="text-center">Registro Paciente Urgencias</h1>
+<hr />
 
-<form asp-action="Registro" method="post">
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Registro" method="post">
 
-    <div asp-validation-summary="All"></div>
+            <div asp-validation-summary="All"></div>
 
-    <div class="form-group">
-        <label> @Html.CheckBox("Atendido", false)
-            ¿Ha Sido Atendido antes ?</label>
-    </div>
 
-    <div class="form-group">
-        <label>Nombre</label>
-        <input asp-for="Nombre" class="form-control">
-        <span class="text-danger" asp-validation-for="Nombre"></span>
+            <div class="form-group">
+                <label>Nombre</label>
+                <input asp-for="Nombre" class="form-control">
+                <span class="text-danger" asp-validation-for="Nombre"></span>
+            </div>
+            <div class="form-group">
+                <label>Apellido</label>
+                <input asp-for="Apellido" class="form-control">
+                <span class="text-danger" asp-validation-for="Apellido"></span>
+            </div>
+            <div asp-for="Genero" >
+                <label>Genero</label>
+                <br>
+                <select name="Genero" id="Genero" class="form-control">
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="NoResponde">No Responde</option>
+                </select>
+                <span class="text-danger" asp-validation-for="Genero"></span>
+            </div>
+            <div class="form-group">
+                <label>FechaNacimiento</label>
+                <input asp-for="FechaNacimiento" class="form-control" type="datetime-local" data-val="true"
+                    value="2022-04-04T09:00" max="@FechaNowString" min="1900-01-01T00:00">
+                <span class="text-danger" asp-validation-for="FechaNacimiento"></span>
+            </div>            
+             <div asp-for="Profesion" >
+                <label>Profesion</label>
+                <br>
+                <select name="Profesion" id="Profesion" class="form-control">
+                    <option value="Otro">Otro</option>
+                    <option value="Carpintero">Carpintero</option>
+                    <option value="Mecanico">Mecanico</option>
+                    <option value="Albañil">Albañil</option>
+                    <option value="Agricultor">Agricultor</option>
+                    <option value="Obrero">Obrero</option>
+                    <option value="Repartidor">Repartidor</option>
+                    <option value="Vigilante">Vigilante</option>
+                    <option value="Electricista">Electricista</option>
+                    <option value="Emfermero">Emfermero</option>
+                    <option value="Futbolista">Futbolista</option>
+                    <option value="Musico">Musico</option>
+                    <option value="Barbero">Barbero</option>
+                    <option value="Policia">Policia</option>
+                    <option value="Bombero">Bombero</option>
+                    <option value="Medico">Medico</option>
+                    <option value="Celador">Celador</option>
+                    <option value="Matematico">Matematico</option>
+                    <option value="Fisico">Fisico</option>
+                    <option value="Arquitecto">Arquitecto</option>
+                    <option value="Secretaria">Secretaria</option>
+                    <option value="Desarrollador">Desarrollador</option>
+                </select>
+                <span class="text-danger" asp-validation-for="Profesion"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary table-btn mt-3 "><i class="fa fa-user-plus fa-lg"></i>Registrar Paciente</button>
+
+        </form>
     </div>
-    <div class="form-group">
-        <label>Apellido</label>
-        <input asp-for="Apellido" class="form-control">
-        <span class="text-danger" asp-validation-for="Apellido"></span>
-    </div>
-    <div class="form-group">
-        <label>Genero</label>
-        <input asp-for="Genero" class="form-control">
-        <span class="text-danger" asp-validation-for="Genero"></span>
-    </div>
-    <div class="form-group">
-        <label>FechaNacimiento</label>
-        <input asp-for="FechaNacimiento" class="form-control"  type="datetime-local" data-val="true" value="2022-04-04">
-        <span class="text-danger" asp-validation-for="FechaNacimiento"></span>
-    </div>
-    <div class="form-group">
-        <label>Profesion</label>
-        <input asp-for="Profesion" class="form-control" >
-        <span class="text-danger" asp-validation-for="Profesion"></span>
-    </div>
-    
- <button type="submit" class="btn btn-primary table-btn">Registrar Paciente</button>
-    
-</form>
+</div>

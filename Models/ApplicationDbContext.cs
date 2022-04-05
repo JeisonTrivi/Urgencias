@@ -14,5 +14,6 @@ namespace Urgencias.Models
 
         public DbSet<Paciente> Pacientes { get; set; }
 
+
     }
 }
