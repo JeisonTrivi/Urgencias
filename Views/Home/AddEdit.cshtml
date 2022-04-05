@@ -1,0 +1,62 @@
+@model Urgencias.Models.Paciente
+@{
+    ViewData["Title"] = "Edit";
+}
+<h4>Pacientes</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="AddEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>id Paciente</label>
+                    <input asp-for="idPaciente" class="form-control" readonly>
+                    <span class="text-danger" asp-validation-for="idPaciente"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input asp-for="Nombre" class="form-control">
+                    <span class="text-danger" asp-validation-for="Nombre"></span>
+                </div>
+                <div class="form-group">
+                    <label>Apellido</label>
+                    <input asp-for="Apellido" class="form-control">
+                    <span class="text-danger" asp-validation-for="Apellido"></span>
+                </div>
+                <div class="form-group">
+                    <label>Genero</label>
+                    <input asp-for="Genero" class="form-control">
+                    <span class="text-danger" asp-validation-for="Genero"></span>
+                </div>
+                <div class="form-group">
+                    <label>FechaNacimiento</label>
+                    <input asp-for="FechaNacimiento" class="form-control" type="datetime-local" data-val="true"
+                        value="FechaNacimiento">
+                    <span class="text-danger" asp-validation-for="FechaNacimiento"></span>
+                </div>
+                <div class="form-group">
+                    <label>Profesion</label>
+                    <input asp-for="Profesion" class="form-control">
+                    <span class="text-danger" asp-validation-for="Profesion"></span>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input asp-for="Nombre" type="submit"  value="Editar Paciente" class="btn btn-primary btn-block" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <a asp-action="Index" class="btn btn-secondary btn-block"><i class="fa fa-table"></i> Volver a
+                            listado</a>
+                    </div>
+                </div>
+
+        </form>
+    </div>
+</div>
+
+@*Se agrega esta sección para que funcione la validación frontend*@
+@section Scripts{
+@{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

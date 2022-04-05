@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Urgencias.Models.Paciente>
+@{
+    ViewData["Title"] = "Inicio";
+}
+<h4>Listado de Pacientes</h4>
+<hr />
+ 
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaNacimiento)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Profesion)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Edad)
+            </th>
+            <th>
+                <a class="btn btn-outline-success" asp-action="AddEdit"><i class="fa fa-plus-square"></i>Paciente</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Genero)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.FechaNacimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Profesion)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Edad)
+            </td>
+            <td>
+                <a asp-action="AddEdit" asp-route-id="@item.idPaciente"><i class="fa fa-marker fa-lg"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.idPaciente" class="text-danger ml-1"
+                   onclick="return confirm('¿Está seguro que desea eliminar este registro?')"><i class="fa fa-trash-alt fa-lg"></i></a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
